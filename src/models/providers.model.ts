@@ -12,12 +12,19 @@ const ProviderSchema = new mongoose.Schema({
     type: String,
   },
 
-  coordinates: {
-    type: [Number],
-    required: true,
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
   },
 
-  specilization: {
+  specialization: {
     type: [String],
   },
   consultation_fee: {
@@ -26,10 +33,11 @@ const ProviderSchema = new mongoose.Schema({
   insurance: {
     type: [String],
   },
-  rating: {
+  rate: {
     type: Number,
   },
 });
+ProviderSchema.index({ location: "2dsphere" });
 
 const Provider = mongoose.model<providerType>("Provider", ProviderSchema);
 

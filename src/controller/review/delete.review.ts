@@ -11,7 +11,7 @@ const deleteReview = async (req: Request, res: Response) => {
       res.status(404).json({ message: "review not only" });
       return;
     }
-    res.status(200).json({ message: "review delete successfully" });
+    res.status(200).json({ message: "review deleted successfully" });
   } catch (error) {
     const err = error as Error;
 

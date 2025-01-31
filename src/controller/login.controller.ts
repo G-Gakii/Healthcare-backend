@@ -6,12 +6,11 @@ import { generateAccessToken } from "../token/user.token";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
-    const { error } = validateUser(req.body);
-    if (error) {
-      res.status(400).json({ message: error.details[0].message });
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).json({ message: "All fields required" });
       return;
     }
-    const { email, password } = req.body;
     const user = await User.findOne({ email: email });
     if (!user) {
       res.status(404).json({ Message: `${email} is not registered` });

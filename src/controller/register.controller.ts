@@ -11,7 +11,7 @@ export const registerUser = async (req: Request, res: Response) => {
       res.status(400).json({ message: error.details[0].message });
       return;
     }
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     let existinguser = await User.findOne({ email: email });
     if (existinguser) {
       res.status(409).json({
@@ -26,6 +26,7 @@ export const registerUser = async (req: Request, res: Response) => {
       username: username,
       email: email,
       password: hashedPassword,
+      role: role,
     });
     const newUser = await user.save();
     const accessToken = await generateAccessToken(newUser._id.toString());

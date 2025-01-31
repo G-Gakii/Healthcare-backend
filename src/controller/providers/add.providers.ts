@@ -3,8 +3,9 @@ import { Request, Response } from "express";
 import mongoose from "mongoose";
 import providerSchema from "../../validator/providers.validator";
 import Provider from "../../models/providers.model";
+import { AuthenticatedRequest } from "../../interface/auth.interface";
 
-const addProviders = async (req: Request, res: Response) => {
+const addProviders = async (req: AuthenticatedRequest, res: Response) => {
   const session = await mongoose.startSession();
   session.startTransaction();
 
