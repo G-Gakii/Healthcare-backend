@@ -1,7 +1,7 @@
-import { required, string } from "joi";
+import { number } from "joi";
 import mongoose from "mongoose";
 
-const appointmentSchema = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema(
   {
     provider: {
       type: mongoose.Schema.Types.ObjectId,
@@ -13,9 +13,12 @@ const appointmentSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    date: {
-      type: Date,
+    rating: {
+      type: Number,
       required: true,
+    },
+    comment: {
+      type: String,
     },
   },
   {
@@ -23,6 +26,5 @@ const appointmentSchema = new mongoose.Schema(
   }
 );
 
-const Appointment = mongoose.model("Appointment", appointmentSchema);
-
-export default Appointment;
+const Review = mongoose.model("Review", reviewSchema);
+export default Review;

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import appointmentSchema from "../../validator/appointment.validator";
 import Appointment from "../../models/appointment.models";
 
-const editAppointment = async (req: Request, res: Response) => {
+const getAppointmentByUser = async (req: Request, res: Response) => {
   const session = mongoose.startSession();
   (await session).startTransaction();
   try {
@@ -28,4 +28,4 @@ const editAppointment = async (req: Request, res: Response) => {
   }
 };
 
-export default editAppointment;
+export default getAppointmentByUser;
