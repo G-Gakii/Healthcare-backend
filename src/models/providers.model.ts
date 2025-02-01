@@ -1,9 +1,14 @@
-import { required } from "joi";
+import { required, string } from "joi";
 import mongoose from "mongoose";
 import { providerType } from "../interface/provider.interface";
 
 const ProviderSchema = new mongoose.Schema({
   name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
     type: String,
     required: true,
     unique: true,
@@ -37,6 +42,18 @@ const ProviderSchema = new mongoose.Schema({
     type: Number,
   },
 });
+
+ProviderSchema.virtual("reviews", {
+  ref: "Review",
+  localField: "_id",
+  foreignField: "provider",
+  justOne: false,
+});
+
+// Ensure virtual fields are serialized
+ProviderSchema.set("toObject", { virtuals: true });
+ProviderSchema.set("toJSON", { virtuals: true });
+
 ProviderSchema.index({ location: "2dsphere" });
 
 const Provider = mongoose.model<providerType>("Provider", ProviderSchema);

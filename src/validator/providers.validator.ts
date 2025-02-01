@@ -3,6 +3,12 @@ import Joi from "joi";
 const providerSchema = Joi.array().items(
   Joi.object({
     name: Joi.string().min(2).max(60).required(),
+    email: Joi.string()
+      .required()
+      .email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net"] },
+      }),
     address: Joi.string().allow(null, ""),
     location: Joi.object({
       type: Joi.string().valid("Point").required(),
@@ -21,6 +27,12 @@ const providerSchema = Joi.array().items(
 
 export const singleProviderSchema = Joi.object({
   name: Joi.string().min(2).max(60).required(),
+  email: Joi.string()
+    .required()
+    .email({
+      minDomainSegments: 2,
+      tlds: { allow: ["com", "net"] },
+    }),
   address: Joi.string().allow(null, ""),
   location: Joi.object({
     type: Joi.string().valid("Point").required(),

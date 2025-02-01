@@ -15,7 +15,17 @@ router.post(
   authorizedUser(["user"]),
   ReviewProvider
 );
-router.put("/review/:id", editReview);
-router.delete("/review/:id", deleteReview);
+router.put(
+  "/review/:id",
+  autheticateUser,
+  authorizedUser(["user", "admin"]),
+  editReview
+);
+router.delete(
+  "/review/:id",
+  autheticateUser,
+  authorizedUser(["user", "admin"]),
+  deleteReview
+);
 
 export default router;

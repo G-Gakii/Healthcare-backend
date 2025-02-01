@@ -15,10 +15,8 @@ const editAppointment = async (req: AuthenticatedRequest, res: Response) => {
       res.status(404).json({ message: "User not found" });
       return;
     }
-    const yourAppointment = await Appointment.findByIdAndUpdate(id, {
-      ...appointment,
-      user: user._id,
-    });
+    const yourAppointment = await Appointment.findById(id);
+
     if (!yourAppointment) {
       res.status(404).json({ message: "Appointment not found" });
       return;
@@ -30,11 +28,15 @@ const editAppointment = async (req: AuthenticatedRequest, res: Response) => {
       res.status(401).json({ message: "Unathorized to edit appointment" });
       return;
     }
+    const myAppointment = await Appointment.findByIdAndUpdate(id, {
+      ...appointment,
+      user: user._id,
+    });
     (await session).commitTransaction();
 
     res
       .status(200)
-      .json({ message: "Updated successfully ", appointment: yourAppointment });
+      .json({ message: "Updated successfully ", appointment: myAppointment });
     return;
   } catch (error) {
     const err = error as Error;

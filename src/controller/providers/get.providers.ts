@@ -5,8 +5,10 @@ import { stringify } from "querystring";
 
 const getProviders = async (req: Request, res: Response) => {
   try {
-    const providers = await Provider.find({});
-
+    const providers = await Provider.find({}).populate({
+      path: "reviews",
+      model: "Review",
+    });
     res.status(200).json({ providers: providers });
     return;
   } catch (error) {

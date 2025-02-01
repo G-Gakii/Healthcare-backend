@@ -29,14 +29,27 @@ const ReviewProvider = async (req: AuthenticatedRequest, res: Response) => {
     const newreview = new Review({ ...review, user });
     const myreview = await newreview.save();
 
-    const reviews = await Review.find({ provider });
-    const totalRating = reviews.reduce(
-      (sum: number, review: any) => sum + review.rating,
+    const reviews = await Review.find({ provider: provider });
+
+    const providerRating = reviews.map((review) => review.rating);
+    const totalRating = providerRating.reduce(
+      (acc, current) => acc + current,
       0
     );
-    const averageRating = totalRating / reviews.length;
 
-    await Provider.findByIdAndUpdate(provider, { rate: averageRating });
+    const averageRating = totalRating / providerRating.length;
+    console.log(`average rating ${averageRating}`);
+
+    const prov = await Provider.findById(provider);
+    console.log(prov);
+
+    const provide = await Provider.findByIdAndUpdate(
+      provider,
+      { rate: averageRating },
+      { new: true }
+    );
+    console.log(provide);
+
     (await session).commitTransaction();
 
     res.status(201).json(myreview);
