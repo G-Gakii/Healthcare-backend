@@ -3,7 +3,6 @@
 ## Overview
 
 This project focuses on the backend development of a platform that enables users to locate healthcare providers based on location and specialization. It also aims to improve cost transparency, simplify appointment booking, and promote accountability and quality of care through feedback and ratings.
-//The project is open-source to encourage collaboration and widespread adoption.
 
 ## Goals
 
@@ -11,7 +10,6 @@ This project focuses on the backend development of a platform that enables users
 - Improve cost transparency by displaying consultation fees and accepted insurance plans.
 - Simplify appointment booking with an intuitive scheduling system and reminders.
 - Promote accountability and quality of care through a feedback and ratings system.
-- // Make the platform open-source to encourage collaboration and widespread adoption.
 
 ## Features
 
