@@ -8,7 +8,7 @@ This project focuses on the backend development of a platform that enables users
 
 - Enable users to locate healthcare providers based on location and specialization.
 - Improve cost transparency by displaying consultation fees and accepted insurance plans.
-- Simplify appointment booking with an intuitive scheduling system and reminders.
+- Simplify appointment booking with an intuitive scheduling system .
 - Promote accountability and quality of care through a feedback and ratings system.
 
 ## Features
@@ -153,57 +153,7 @@ This project focuses on the backend development of a platform that enables users
 ],
 "id": "679d23fa58b037d16cbf8569"
 },
-{
-"location": {
-"type": "Point",
-"coordinates": [
--1.3011,
-36.80691
-]
-},
-"\_id": "679d251758b037d16cbf856e",
-"name": "KRH",
-"specialization": [
-"Dental",
-"General",
-"Optical"
-],
-"consultation_fee": 1000,
-"insurance": [
-"APA",
-"Equity"
-],
-"rating": 0,
-"**v": 0,
-"reviews": [],
-"id": "679d251758b037d16cbf856e"
-},
-{
-"location": {
-"type": "Point",
-"coordinates": [
--1.3111,
-36.70691
-]
-},
-"\_id": "679d251758b037d16cbf856f",
-"name": "KDFMH",
-"specialization": [
-"Dental",
-"General",
-"Optical",
-"McH"
-],
-"consultation_fee": 1000,
-"insurance": [
-"APA",
-"Jubilee"
-],
-"rating": 0,
-"**v": 0,
-"reviews": [],
-"id": "679d251758b037d16cbf856f"
-},
+
 ]
 }
 
