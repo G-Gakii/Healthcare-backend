@@ -8,7 +8,7 @@ const nearestProvider = async (req: Request, res: Response) => {
     const providers = await Provider.find({
       location: {
         $near: {
-          $geometry: { type: "Point", coordinates: [longitude, latitude] },
+          $geometry: { type: "Point", coordinates: [latitude, longitude] },
           $maxDistance: 5000,
         },
       },
