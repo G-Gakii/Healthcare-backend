@@ -5,7 +5,10 @@ import Provider from "../../models/providers.model";
 const getSingleProvider = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { id } = req.params;
-    const provider = await Provider.findById(id);
+    const provider = await Provider.findById(id).populate({
+      path: "reviews",
+      model: "Review",
+    });
     if (!provider) {
       res.status(404).json({ message: "Provider not found" });
       return;
