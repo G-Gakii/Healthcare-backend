@@ -4,16 +4,19 @@ import addProviders from "../controller/providers/add.providers";
 import editProvider from "../controller/providers/edit.providers";
 import deleteProvider from "../controller/providers/delete.providers";
 import { autheticateUser } from "../middleware/auth.middleware";
+import getSingleProvider from "../controller/providers/getOneprovider";
 
 const router = express.Router();
 
 router.get("/providers", getProviders);
+router.get("/providers/:id", getSingleProvider);
 router.post(
   "/providers",
   autheticateUser,
 
   addProviders
 );
+
 router.put(
   "/providers/:id",
   autheticateUser,
