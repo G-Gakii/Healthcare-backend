@@ -11,22 +11,20 @@ const addProviders = async (req: AuthenticatedRequest, res: Response) => {
 
   try {
     const result = await providerSchema.validateAsync(req.body);
-    if (!Array.isArray(result)) {
-      res
-        .status(400)
-        .json({ message: "Request body must be an array of providers" });
+    const { name } = result;
+
+    const existisingProvider = await Provider.findOne({
+      name: name,
+    });
+    if (existisingProvider) {
+      res.status(409).json({ message: "Provider already exist" });
+      await session.abortTransaction();
+
       return;
     }
-    for (let provider of result) {
-      const existisingProvider = await Provider.findOne({
-        name: provider.name,
-      });
-      if (existisingProvider) {
-        res.status(409).json({ message: "Provider already exist" });
-        return;
-      }
-    }
-    const providers = await Provider.insertMany(result, { session });
+    const providers = new Provider(result);
+    await providers.save({ session });
+
     await session.commitTransaction();
     session.endSession();
     res
