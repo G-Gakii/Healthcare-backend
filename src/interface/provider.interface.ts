@@ -4,7 +4,7 @@ export interface providerType {
 
   coordinates: number[];
 
-  specilization: string[];
+  specialization: string[];
   consultation_fee: number;
   insurance: string[];
   rating?: number;

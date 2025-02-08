@@ -4,6 +4,7 @@ import Provider from "../models/providers.model";
 
 const nearestProvider = async (req: Request, res: Response) => {
   const { latitude, longitude, specialization } = req.params;
+  const specializationRegex = new RegExp(`^${specialization}`, "i");
   try {
     const providers = await Provider.find({
       location: {
@@ -15,8 +16,10 @@ const nearestProvider = async (req: Request, res: Response) => {
           $maxDistance: 20000,
         },
       },
-      specialization: { $in: [specialization] },
+      // specialization: { $in: [specialization] },
+      specialization: { $regex: specializationRegex },
     });
+
     res.status(200).json(providers);
     return;
   } catch (error) {
