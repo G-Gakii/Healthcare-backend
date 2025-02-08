@@ -227,19 +227,8 @@ This project focuses on the backend development of a platform that enables users
 ```
 
 - Method:`GET`
-- Endpoint : `api/ach/providers/nearest`
+- Endpoint : `api/ach/providers/nearest/:latitude/:longitude/:specialization`
 - Search for providers based on location and specialization.
-- Request body:
-
-```
-
-{
-"latitude":37.6559,
-"longitude":0.0463,
-"specialization":"Optical"
-}
-
-```
 
 - Success Response:
 

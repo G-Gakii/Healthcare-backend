@@ -18,7 +18,15 @@ const providerSchema = Joi.array().items(
         .required(),
     }).required(),
 
-    specialization: Joi.array().items(Joi.string()).required(),
+    specialization: Joi.array()
+      .items(Joi.string())
+      .custom((value, helpers) => {
+        if (typeof value === "string") {
+          return value.toLowerCase();
+        }
+        return helpers.error("any.invalid");
+      })
+      .required(),
     consultation_fee: Joi.number().required(),
     insurance: Joi.array().items(Joi.string()).allow(null, ""),
     rating: Joi.number().default(0),

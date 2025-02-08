@@ -3,12 +3,15 @@ import { Response, Request } from "express";
 import Provider from "../models/providers.model";
 
 const nearestProvider = async (req: Request, res: Response) => {
-  const { latitude, longitude, specialization } = req.body;
+  const { latitude, longitude, specialization } = req.params;
   try {
     const providers = await Provider.find({
       location: {
         $near: {
-          $geometry: { type: "Point", coordinates: [latitude, longitude] },
+          $geometry: {
+            type: "Point",
+            coordinates: [parseFloat(latitude), parseFloat(longitude)],
+          },
           $maxDistance: 5000,
         },
       },

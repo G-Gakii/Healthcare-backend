@@ -3,6 +3,9 @@ import nearestProvider from "../controller/search.controller";
 
 const router = Router();
 
-router.post("/providers/nearest", nearestProvider);
+router.get(
+  "/providers/nearest/:latitude/:longitude/:specialization",
+  nearestProvider
+);
 
 export default router;
