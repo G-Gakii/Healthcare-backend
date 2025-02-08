@@ -12,7 +12,7 @@ const nearestProvider = async (req: Request, res: Response) => {
             type: "Point",
             coordinates: [parseFloat(latitude), parseFloat(longitude)],
           },
-          $maxDistance: 5000,
+          $maxDistance: 20000,
         },
       },
       specialization: { $in: [specialization] },
