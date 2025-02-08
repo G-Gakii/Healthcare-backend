@@ -162,7 +162,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`POST`
 - Endpoint : `/api/ach/providers`
 - Add a list of providers.
-- Authentication: Only admins can access this endpoint. The request must include a valid Bearer token with admin role permissions.
+- Authentication: The request must include a valid Bearer token .
 - Headers:
   - Authorization: `Bearer <token>`
 - Request body
@@ -267,7 +267,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`PUT`
 - Endpoint : `api/ach/providers/:id`
 - Update a provider.
-- - Authentication: Only admins can access this endpoint. The request must include a valid Bearer token with admin role permissions.
+- - Authentication: The request must include a valid Bearer token with admin role permissions.
 - Headers:
   - Authorization: `Bearer <token>`
 - Request body
@@ -332,7 +332,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`DELETE`
 - Endpoint : `api/ach/providers/:id`
 - Delete a provider.
-- Authentication: Only admins can access this endpoint. The request must include a valid Bearer token with admin role permissions.
+- Authentication: The request must include a valid Bearer token.
 - Headers:
 
 - Authorization: `Bearer <token>`
@@ -386,7 +386,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`GET`
 - Endpoint : `api/ach/appointment`
 - Get All appointment details.
-- Authentication: Only admins can access this endpoint. The request must include a valid Bearer token with admin role permissions.
+- Authentication: The request must include a valid Bearer token .
 - Headers:
   - Authorization: `Bearer <token>`
 - Success Response:
@@ -412,7 +412,7 @@ This project focuses on the backend development of a platform that enables users
 
 - Endpoint : `api/ach/appointment/:id`
 - Get Users appointment details.
-- Authentication: Only admins or owner can access this endpoint. The request must include a valid Bearer token with admin role permissions or owner.
+- Authentication: The request must include a valid Bearer token
 - Headers:
   - Authorization: `Bearer <token>`
 - Success Response:
@@ -438,7 +438,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`PUT`
 - Endpoint : `api/ach/appointment/:id`
 - Update an appointment.
-- Authentication: Only admins or owner can access this endpoint. The request must include a valid Bearer token with admin role permissions or owner.
+- Authentication: The request must include a valid Bearer token.
 - Headers:
   - Authorization: `Bearer <token>`
 - Request body:
@@ -470,7 +470,7 @@ This project focuses on the backend development of a platform that enables users
 - - Method:`DELETE`
 - Endpoint : `api/ach/appointment/:id`
 - Cancel an appointment.
-- Authentication: Only admins or owner can access this endpoint. The request must include a valid Bearer token with admin role permissions or owner.
+- Authentication: The request must include a valid Bearer token
 - Headers:
 
 - Authorization: `Bearer <token>`
@@ -491,7 +491,7 @@ This project focuses on the backend development of a platform that enables users
 - - Method:`POST`
 - Endpoint : `api/ach/review/`
 - Submit feedback.
-- Authentication: Only user can access this endpoint. The request must include a valid Bearer token with user role permissions
+- Authentication: The request must include a valid Bearer token
 - Headers:
   - Authorization: `Bearer <token>`
 - Request body:
@@ -530,7 +530,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`PUT`
 - Endpoint : `api/ach/review/:id`
 - Edit health care provider reviews.
-- Authentication: Only admins or owner can access this endpoint. The request must include a valid Bearer token with admin role permissions or owner.
+- Authentication: The request must include a valid Bearer token
 - Headers:
   - Authorization: `Bearer <token>`
 - Request body:
@@ -569,7 +569,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`DELETE`
 - Endpoint : `api/ach/review/:id`
 - DELETE health care provider reviews.
-- Authentication: Only admins or owner can access this endpoint. The request must include a valid Bearer token with admin role permissions or owner.
+- Authentication: The request must include a valid Bearer token
 - Headers:
 
 - Authorization: `Bearer <token>`
