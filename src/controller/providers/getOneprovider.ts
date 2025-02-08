@@ -6,7 +6,11 @@ const getSingleProvider = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { id } = req.params;
     const provider = await Provider.findById(id);
-    res.status(200).json({ provider });
+    if (!provider) {
+      res.status(404).json({ message: "Provider not found" });
+      return;
+    }
+    res.status(200).json(provider);
     return;
   } catch (error) {
     let err = error as Error;
