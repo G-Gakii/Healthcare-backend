@@ -159,6 +159,43 @@ This project focuses on the backend development of a platform that enables users
 
 ```
 
+- Method:`GET`
+- Endpoint : ` /api/ach/providers/:id`
+- Get a single of provider.
+- Success Response:
+
+  - Code: `200 OK`
+  - Content:
+
+  ````
+  {
+    "location": {
+        "type": "Point",
+        "coordinates": [
+            0.0693,
+            36.6742
+        ]
+    },
+    "_id": "67a747397fe49273570be72c",
+    "name": "HRH",
+    "email": "hrh@gmail.com",
+    "specialization": [
+        "obstetrics",
+        "general"
+    ],
+    "consultation_fee": 1000,
+    "insurance": [
+        "APA",
+        "NHIF",
+        "gth"
+    ],
+    "__v": 0,
+    "reviews": [],
+    "id": "67a747397fe49273570be72c"
+  }```
+
+  ````
+
 - Method:`POST`
 - Endpoint : `/api/ach/providers`
 - Add a list of providers.
@@ -267,7 +304,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`PUT`
 - Endpoint : `api/ach/providers/:id`
 - Update a provider.
-- - Authentication: The request must include a valid Bearer token with admin role permissions.
+- - Authentication: The request must include a valid Bearer token with owner role permissions.
 - Headers:
   - Authorization: `Bearer <token>`
 - Request body
@@ -332,7 +369,7 @@ This project focuses on the backend development of a platform that enables users
 - Method:`DELETE`
 - Endpoint : `api/ach/providers/:id`
 - Delete a provider.
-- Authentication: The request must include a valid Bearer token.
+- Authentication: The request must include a valid Bearer token with owner role permission.
 - Headers:
 
 - Authorization: `Bearer <token>`

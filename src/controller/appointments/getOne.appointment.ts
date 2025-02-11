@@ -11,19 +11,18 @@ const getAppointmentByUser = async (
   const session = mongoose.startSession();
   (await session).startTransaction();
   try {
-    const { userId } = req.params;
     const user = req.user;
     if (!user) {
       res.status(404).json({ message: "User not found" });
       return;
     }
 
-    if (user._id !== userId && user.role !== "admin") {
-      res.status(401).json({ message: "Unathorized" });
-      return;
-    }
+    const currentDate = new Date();
 
-    const yourAppointment = await Appointment.find({ user: userId });
+    const yourAppointment = await Appointment.find({
+      user,
+      date: { $gte: currentDate },
+    }).populate("provider", "name");
 
     (await session).commitTransaction();
 

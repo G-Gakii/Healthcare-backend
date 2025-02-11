@@ -15,7 +15,7 @@ router.get(
   getAllAppointment
 );
 router.get(
-  "/appointment/:id",
+  "/appointment/personal",
   autheticateUser,
 
   getAppointmentByUser

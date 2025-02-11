@@ -4,8 +4,9 @@ import providerSchema, {
   singleProviderSchema,
 } from "../../validator/providers.validator";
 import mongoose from "mongoose";
+import { AuthenticatedRequest } from "../../interface/auth.interface";
 
-const editProvider = async (req: Request, res: Response) => {
+const editProvider = async (req: AuthenticatedRequest, res: Response) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
