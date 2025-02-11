@@ -8,8 +8,8 @@ const getAppointmentByUser = async (
   req: AuthenticatedRequest,
   res: Response
 ) => {
-  const session = mongoose.startSession();
-  (await session).startTransaction();
+  const session = await mongoose.startSession();
+  session.startTransaction();
   try {
     const user = req.user;
     if (!user) {
@@ -20,7 +20,7 @@ const getAppointmentByUser = async (
     const currentDate = new Date();
 
     const yourAppointment = await Appointment.find({
-      user,
+      user: user._id,
       date: { $gte: currentDate },
     }).populate("provider", "name");
 
@@ -34,7 +34,7 @@ const getAppointmentByUser = async (
     res.status(500).json({ message: err.message });
     return;
   } finally {
-    (await session).endSession();
+    session.endSession();
   }
 };
 

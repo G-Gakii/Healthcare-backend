@@ -10,7 +10,6 @@ const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
   session.startTransaction();
   try {
     const { providerId } = req.params;
-    console.log(providerId);
 
     const appointment = await appointmentSchema.validateAsync(req.body);
     const user = req.user;
@@ -18,9 +17,6 @@ const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
       res.status(404).json({ message: "user is not found" });
       return;
     }
-    console.log(providerId);
-    console.log(appointment);
-    console.log(user);
 
     const newAppointment = new Appointment({
       ...appointment,
@@ -29,7 +25,7 @@ const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
     });
 
     const myAppointment = await newAppointment.save({ session });
-    (await session).commitTransaction();
+    session.commitTransaction();
 
     res.status(201).json(myAppointment);
     return;
@@ -39,7 +35,7 @@ const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
     res.status(500).json({ message: err.message });
     return;
   } finally {
-    (await session).endSession();
+    session.endSession();
   }
 };
 
