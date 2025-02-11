@@ -12,24 +12,28 @@ const ReviewProvider = async (req: AuthenticatedRequest, res: Response) => {
   (await session).startTransaction();
   try {
     const review = await reviewSchema.validateAsync(req.body);
+    const { providerId } = req.params;
     const user = req.user?._id;
-    const { provider, rating } = review;
+    const { rating } = review;
 
     if (!user) {
       res.status(404).json({ message: "User not found" });
       return;
     }
-    const existingUser = await Review.findOne({ user: user });
+    const existingUser = await Review.findOne({
+      user: user,
+      provider: providerId,
+    });
     if (existingUser) {
       res
         .status(409)
         .json({ message: "you have already reviewed the provider" });
       return;
     }
-    const newreview = new Review({ ...review, user });
+    const newreview = new Review({ ...review, user, provider: providerId });
     const myreview = await newreview.save();
 
-    const reviews = await Review.find({ provider: provider });
+    const reviews = await Review.find({ provider: providerId });
 
     const providerRating = reviews.map((review) => review.rating);
     const totalRating = providerRating.reduce(
@@ -40,15 +44,13 @@ const ReviewProvider = async (req: AuthenticatedRequest, res: Response) => {
     const averageRating = totalRating / providerRating.length;
     console.log(`average rating ${averageRating}`);
 
-    const prov = await Provider.findById(provider);
-    console.log(prov);
+    const prov = await Provider.findById(providerId);
 
     const provide = await Provider.findByIdAndUpdate(
-      provider,
+      providerId,
       { rate: averageRating },
       { new: true }
     );
-    console.log(provide);
 
     (await session).commitTransaction();
 

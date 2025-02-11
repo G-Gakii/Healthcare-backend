@@ -9,7 +9,7 @@ const router = Router();
 
 router.get("/review/:id", getreviewByProvider);
 router.post(
-  "/review",
+  "/review/:providerId",
   autheticateUser,
 
   ReviewProvider
