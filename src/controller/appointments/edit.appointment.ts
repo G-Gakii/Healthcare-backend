@@ -21,10 +21,7 @@ const editAppointment = async (req: AuthenticatedRequest, res: Response) => {
       res.status(404).json({ message: "Appointment not found" });
       return;
     }
-    if (
-      yourAppointment.user.toString() !== user._id.toString() &&
-      user.role !== "admin"
-    ) {
+    if (yourAppointment.user.toString() !== user._id.toString()) {
       res.status(401).json({ message: "Unathorized to edit appointment" });
       return;
     }
