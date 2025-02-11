@@ -11,7 +11,7 @@ export const autheticateUser = async (
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
-      res.status(401).json({ message: "Unathorized" });
+      res.status(401).json({ message: "Kindly login first" });
       return;
     }
     const bearerToken = authHeader.split(" ");

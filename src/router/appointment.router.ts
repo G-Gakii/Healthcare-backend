@@ -21,7 +21,7 @@ router.get(
   getAppointmentByUser
 );
 router.post(
-  "/appointment",
+  "/appointment/:providerId",
   autheticateUser,
 
   bookAppointment
