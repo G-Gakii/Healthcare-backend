@@ -526,7 +526,7 @@ This project focuses on the backend development of a platform that enables users
 ### Feedback Endpoints
 
 - - Method:`POST`
-- Endpoint : `api/ach/review/`
+- Endpoint : `api/ach/review/:providerId`
 - Submit feedback.
 - Authentication: The request must include a valid Bearer token
 - Headers:
@@ -535,10 +535,7 @@ This project focuses on the backend development of a platform that enables users
 
   ```
   {
-
-    "provider":"679d23fa58b037d16cbf8569",
-
-    "rating":4,
+   "rating":4,
     "comment":"Good"
   }
   ```
