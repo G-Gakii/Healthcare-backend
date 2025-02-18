@@ -8,23 +8,23 @@ import getSingleProvider from "../controller/providers/getOneprovider";
 
 const router = express.Router();
 
-router.get("/providers", getProviders);
-router.get("/providers/:id", getSingleProvider);
+router.get("/", getProviders);
+router.get("/:id", getSingleProvider);
 router.post(
-  "/providers",
+  "/",
   autheticateUser,
 
   addProviders
 );
 
 router.put(
-  "/providers/:id",
+  "/:id",
   autheticateUser,
 
   editProvider
 );
 router.delete(
-  "/providers/:id",
+  "/:id",
   autheticateUser,
 
   deleteProvider

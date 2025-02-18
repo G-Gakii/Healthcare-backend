@@ -12,10 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api/ach/", registeruser);
-app.use("/api/ach/", providers);
-app.use("/api/ach/", appointment);
-app.use("/api/ach/", review);
-app.use("/api/ach/", searchProvider);
+app.use("/api/ach/providers", providers);
+app.use("/api/ach/appointment", appointment);
+app.use("/api/ach//providers/nearest", searchProvider);
 
 const port = process.env.PORT || 3001;
 

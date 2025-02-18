@@ -7,21 +7,21 @@ import { autheticateUser } from "../middleware/auth.middleware";
 
 const router = Router();
 
-router.get("/review/:id", getreviewByProvider);
+router.get("/:id", getreviewByProvider);
 router.post(
-  "/review/:providerId",
+  "/:providerId",
   autheticateUser,
 
   ReviewProvider
 );
 router.put(
-  "/review/:id",
+  "/:id",
   autheticateUser,
 
   editReview
 );
 router.delete(
-  "/review/:id",
+  "/:id",
   autheticateUser,
 
   deleteReview

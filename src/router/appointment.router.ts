@@ -9,31 +9,31 @@ import { autheticateUser } from "../middleware/auth.middleware";
 const router = Router();
 
 router.get(
-  "/appointment",
+  "/",
   autheticateUser,
 
   getAllAppointment
 );
 router.get(
-  "/appointment/personal",
+  "/personal",
   autheticateUser,
 
   getAppointmentByUser
 );
 router.post(
-  "/appointment/:providerId",
+  "/:providerId",
   autheticateUser,
 
   bookAppointment
 );
 router.put(
-  "/appointment/:id",
+  "/:id",
   autheticateUser,
 
   editAppointment
 );
 router.delete(
-  "/appointment/:id",
+  "/:id",
   autheticateUser,
 
   deleteAppointment
