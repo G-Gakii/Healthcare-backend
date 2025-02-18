@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import mongoose from "mongoose";
 import Provider from "../../models/providers.model";
 import { stringify } from "querystring";
+import Review from "../../models/review.model";
 
 const getProviders = async (req: Request, res: Response) => {
   try {

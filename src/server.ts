@@ -15,6 +15,7 @@ app.use("/api/ach/", registeruser);
 app.use("/api/ach/providers", providers);
 app.use("/api/ach/appointment", appointment);
 app.use("/api/ach//providers/nearest", searchProvider);
+app.use("/api/ach/review", review);
 
 const port = process.env.PORT || 3001;
 
