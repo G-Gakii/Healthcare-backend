@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import appointmentSchema from "../../validator/appointment.validator";
+
 import Appointment from "../../models/appointment.models";
 import { AuthenticatedRequest } from "../../interface/auth.interface";
 
