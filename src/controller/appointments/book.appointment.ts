@@ -4,6 +4,8 @@ import appointmentSchema from "../../validator/appointment.validator";
 import Appointment from "../../models/appointment.models";
 import { AuthenticatedRequest } from "../../interface/auth.interface";
 import { log } from "console";
+import sendMail from "../../utilils/email";
+import Provider from "../../models/providers.model";
 
 const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
   const session = await mongoose.startSession();
@@ -12,6 +14,7 @@ const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
     const { providerId } = req.params;
 
     const appointment = await appointmentSchema.validateAsync(req.body);
+
     const user = req.user;
     if (!user) {
       res.status(404).json({ message: "user is not found" });
@@ -25,7 +28,18 @@ const bookAppointment = async (req: AuthenticatedRequest, res: Response) => {
     });
 
     const myAppointment = await newAppointment.save({ session });
+    const provider = await Provider.findById(providerId);
+    if (!provider) {
+      res.status(404).json({ message: "Provider not found" });
+      return;
+    }
+    const { name } = provider;
     session.commitTransaction();
+    await sendMail(
+      user.email,
+      "Appointment",
+      `You have booked appointment on ${myAppointment.date} at ${name} facility `
+    );
 
     res.status(201).json(myAppointment);
     return;
