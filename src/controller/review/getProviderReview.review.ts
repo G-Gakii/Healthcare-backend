@@ -6,8 +6,10 @@ const getreviewByProvider = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const reviews = await Review.find({ provider: id });
-    console.log(reviews);
+    const reviews = await Review.find({ provider: id }).populate(
+      "user",
+      "username"
+    );
 
     res.status(200).json(reviews);
     return;
