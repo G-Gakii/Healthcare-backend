@@ -10,6 +10,7 @@ This project focuses on the backend development of a platform that enables users
 - Improve cost transparency by displaying consultation fees and accepted insurance plans.
 - Simplify appointment booking with an intuitive scheduling system .
 - Promote accountability and quality of care through a feedback and ratings system.
+- Notify Users when they book an appointment
 
 ## Features
 
@@ -35,7 +36,7 @@ This project focuses on the backend development of a platform that enables users
 
 ## API Endpoints
 
--Base Url:`https://accessablehealthcare.onrender.com`
+-Base Url:`https://healthcare-backend-wxat.onrender.com`
 
 ### User Authentication Endpoints
 
